@@ -59,14 +59,6 @@
   <a href="${url}" target="_blank">
     <b>$title</b></a>
 
-  ## Link for MLT / More Like This / Find Similar
-  <span class="mlt">
-    #if($params.getBool('mlt', false) == false)
-      <a href="#lensNoQ&q=id:%22$docId%22&mlt=true">
-        More Like This</a>
-    #end
-  </span>
-
 </div>
 
 ## Row 2?: ID / URL
@@ -93,61 +85,18 @@
   </div>
 #end
 
-## Last_Modified Date
-#if($doc.getFieldValue('last_modified'))
-  <div>
-    last-modified:
-    #field('last_modified')
-  </div>
+## Section Title
+#if($doc.getFieldValue('section_title'))
+<div>
+    Section: #field('section_title')
+</div>
 #end
 
-## Main content of doc
+## Section Text
+#if($doc.getFieldValue('section_text'))
 <div class="result-body">
-  #field('content')
+    #field('section_text')
 </div>
-
-## Display Similar Documents / MLT = More Like This
-<div class="mlt">
-  #set($mlt = $mltResults.get($docId))
-  #set($mltOn = $params.getBool('mlt'))
-  #if($mltOn == true)
-    <div class="field-name">
-      Similar Items
-    </div>
-  #end
-  ## If has MLT enabled An Entries to show
-  #if ($mltOn && $mlt && $mlt.size() > 0)
-    <ul>
-      #foreach($mltHit in $mlt)
-        #set($mltId = $mltHit.getFieldValue('id'))
-        <li>
-          <div>
-            <a href="#url_for_home?q=id:$mltId">
-              $mltId</a>
-          </div>
-          <div>
-            <span class="field-name">
-              Title:
-            </span>
-            $mltHit.getFieldValue('title')
-          </div>
-          <div>
-            <span class="field-name">
-              Author:
-            </span>
-            $mltHit.getFieldValue('author')
-            <span class="field-name">
-              Description:
-            </span>
-            $mltHit.getFieldValue('description')
-          </div>
-        </li>
-      #end    ## end for each mltHit in $mlt
-    </ul>
-  ## Else MLT Enabled but no mlt results for this query
-  #elseif($mltOn && $mlt.size() == 0)
-    <div>No Similar Items Found</div>
-  #end
-</div>  ## div class=mlt
+#end
 
 #parse('debug.vm')

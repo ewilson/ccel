@@ -4,15 +4,8 @@
 
 #set($searcher = $request.searcher)
 #set($params = $request.params)
-#set($clusters = $response.response.clusters)
-#set($mltResults = $response.response.get("moreLikeThis"))
 #set($annotate = $params.get("annotateBrowse"))
 #parse('query_form.vm')
-#parse('did_you_mean.vm')
-
-<div class="navigators">
-  #parse("facets.vm")
-</div>
 
 <div class="pagination">
   #parse("pagination_top.vm")
