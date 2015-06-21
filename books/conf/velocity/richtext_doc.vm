@@ -15,15 +15,6 @@
   #set($title = "["+$doc.getFieldValue('id')+"]")
 #end
 
-## URL
-#if($doc.getFieldValue('url'))
-  #set($url = $doc.getFieldValue('url'))
-#elseif($doc.getFieldValue('resourcename'))
-  #set($url = "file:///$doc.getFieldValue('resourcename')")
-#else
-  #set($url = "$doc.getFieldValue('id')")
-#end
-
 ## Sort out Mime-Type
 #set($ct = $list.get($doc.getFirstValue('content_type').split(";"),0))
 #set($filename = $doc.getFieldValue('resourcename'))
@@ -42,54 +33,29 @@
   #set($filetype = $filename.substring($filename.lastIndexOf(".")).substring(1))
 #end
 
-## #if(!$filetype)
-##   #set($filetype = "file")
-## #end
-## #if(!$supportedMimeTypes.contains($filetype))
-##   #set($filetype = "file")
-## #end
-
-## Row 1: Icon and Title and mlt link
-<div class="result-title">
-  ## Icon
-  ## Small file type icons from http://www.splitbrain.org/projects/file_icons (public domain)
-  <img src="#{url_root}/img/filetypes/${filetype}.png" align="center">
-
-  ## Title, hyperlinked
-  <a href="${url}" target="_blank">
-    <b>$title</b></a>
-
-</div>
-
-## Row 2?: ID / URL
 <div>
   Id: #field('id')
 </div>
-
-## Resource Name
-<div>
-  #if($doc.getFieldValue('resourcename'))
-    Resource name: $filename 
-  #elseif($url)
-    URL: $url
-  #end
-  #if($ct)
-    ($ct)
-  #end
-</div>
-
-## Author
-#if($doc.getFieldValue('author'))
-  <div>
-    Author: #field('author')
-  </div>
-#end
 
 ## Section Title
 #if($doc.getFieldValue('section_title'))
 <div>
     Section: #field('section_title')
 </div>
+#end
+
+## Title
+#if($doc.getFieldValue('title'))
+<div>
+    Book: #field('title')
+</div>
+#end
+
+## Author
+#if($doc.getFieldValue('author'))
+  <div>
+    Author: #field('author')
+  </div>
 #end
 
 ## Section Text
