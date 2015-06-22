@@ -21,14 +21,16 @@
    <!-- If you remove this field, you must _also_ disable the update log in solrconfig.xml
       or Solr won't start. _version_ and update log are required for SolrCloud
    --> 
-   <field name="_version_" type="long" indexed="true" stored="true"/>
+    <field name="_version_" type="long" indexed="true" stored="true"/>
    
-   <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
+    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 
-   <field name="author" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
-   <field name="title" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
-   <field name="section_title" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
-   <field name="section_text" type="text_en" indexed="true" stored="true" required="true" multiValued="false" />
+    <field name="section_id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+    <field name="author" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
+    <field name="title" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
+    <field name="section_title" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
+    <field name="section_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+    <field name="para_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
 
    <uniqueKey>id</uniqueKey>
 

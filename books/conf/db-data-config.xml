@@ -2,11 +2,13 @@
   <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/books" user="pipeline" password="password" batchSize="1" />
     <document>
         <entity name="books" query="select * from book_staging">
-            <field column="section_id" name="id" />
+            <field column="id" name="id" />
+            <field column="section_id" name="section_id" />
             <field column="author" name="author" />
             <field column="title" name="title" />
             <field column="section_title" name="section_title" />
             <field column="section_text" name="section_text" />
+            <field column="para_text" name="para_text" />
         </entity>
     </document>
 </dataConfig>
