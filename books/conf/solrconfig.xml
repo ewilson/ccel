@@ -153,7 +153,7 @@
 
        <!-- Query settings -->
        <str name="defType">edismax</str>
-       <str name="qf">section_title section_text^2.0</str>
+       <str name="qf">para_text</str>
        <str name="mm">2</str>
        <str name="rows">10</str>
        <str name="fl">*,score</str>

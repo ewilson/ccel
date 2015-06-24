@@ -58,10 +58,10 @@
   </div>
 #end
 
-## Section Text
-#if($doc.getFieldValue('section_text'))
+## Para Text
+#if($doc.getFieldValue('para_text'))
 <div class="result-body">
-    #field('section_text')
+    #field('para_text')
 </div>
 #end
 
